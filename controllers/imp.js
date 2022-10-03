@@ -11,17 +11,12 @@ const allProducts = async (req, res, next) => {
     for (let i = 0; i < result.data.length; i++) {
       ans.push(result.data[i]);
     }
-    // await db.MutuleFundData.create(ans);
-    // const found = result.data.find((element) => element);
+  
     res.status(200).json({
       success: true,
       ans,
     });
-    // var xls = json2xls(ans);
-    // const fileName = "FundData" + ".xlsx";
-    // fs1.writeFileSync(fileName, xls, "binary");
-    // res.xls("FundData.xlsx", ans);
-    // res.send(ans);
+   
   } catch (error) {
     console.error(error);
     let message = error.message;
@@ -46,10 +41,7 @@ const getDataByIds = async (req, res, next) => {
         arr.push(ans);
       }
     }
-    // var xls = json2xls(ans);
-    // const fileName = "mdDataFile" + ".xlsx";
-    // fs1.writeFileSync(fileName, xls, "binary");
-    // res.xls("mdDataFile.xlsx", ans);
+   
 
     console.log(arr, "a1");
     console.log("122343434");
@@ -58,7 +50,6 @@ const getDataByIds = async (req, res, next) => {
       _data: arr,
     });
 
-    // console.log("hello", data);
   } catch (error) {
     console.error(error);
     let message = error.message;
@@ -75,28 +66,13 @@ const getDataById = async (req, res, next) => {
     const result = await axios.get("https://api.mfapi.in/mf");
 
     const found = result.data.find((element) => element.schemeCode === id);
-    // console.log(found);
 
     if (found) {
       let result1 = await axios.get(`https://api.mfapi.in/mf/${id}`);
-      // let ans1 = result1.data;
-      //   console.log(ans1);
       for (let i = 0; i < result1.data.length; i++) {
         console.log(result1.data);
         ans.push(result1.data[i]);
       }
-      console.log(ans, "==============");
-
-      //   res.status(200).json({
-      //     success: true,
-      //     ans,
-      //   });
-
-      //   var xls = json2xls(ans);
-      //   const fileName = "FundDataids" + ".xlsx";
-      //   fs1.writeFileSync(fileName, xls, "binary");
-      //   res.xls("FundDataids.xlsx", ans);
-      //   res.send(ans);
     } else {
       console.log("Not found");
     }
@@ -107,29 +83,6 @@ const getDataById = async (req, res, next) => {
     res.status(500).send({ status: false, message });
   }
 };
-// {
-//     campaign_id: 123,
-//     campaign_name: SomeName,
-//     subcampaigns: [
-//       {country: Australia, impressions: 12000, cost: 12},
-//       {country: Australia, impressions: 14000, cost: 17},
-//       {country: Singapore, impressions: 10000, cost: 7},
-//       {country: Singapore, impressions: 7000, cost: 6}
-//     ]
-//   }
-// [{
-//     campaign_name: SomeName,
-//     country: Australia,
-//     impressions: 36000
-//     cost: 29
-//   },
-//   {
-//     campaign_name: SomeName,
-//     country: Singapore
-//     impressions: 17000
-//     cost: 13
-//   }]
-var groupedSubcampaigns = _.groupBy(data.subcampaigns, "country");
 var summator = function (memo, el) {
   return memo + el;
 };
