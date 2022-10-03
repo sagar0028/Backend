@@ -2,8 +2,8 @@
     "database": {
         "host": "localhost",
         "port": 3306,
-        "user": "root",
-        "password": "sagar123",
-        "database": "db_name"
+        "user": "your_username",
+        "password": "your_password",
+        "database": "your_dbname"
     }
 }
