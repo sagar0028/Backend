@@ -1,4 +1,3 @@
-// const { DataType, Sequelize } = require("sequelize");
 const {DataTypes,Sequelize} =  require("sequelize");
 
 module.exports = model;
