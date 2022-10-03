@@ -33,7 +33,6 @@ async function initialize() {
     });
     db.sequelize = sequelize;
 
-    // db.MutuleFundData = require("../models/")(sequelize);
     db.formDetails = require("../models/formData")(sequelize);
     db.ProductDetails = require("../models/productDetails")(sequelize);
     await sequelize.sync();
